@@ -108,16 +108,31 @@ $(function() {
           var firstFeed,
               secondFeed; 
 
+        //Handling jasmine.DEFAULT_TIMEOUT_INTERVAL Error 
+        // By increasing its value to 10000 then resetting it back 
+        // to the default value after the asynchronous call is used
+          var originalTimeout;
+
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                firstFeed = $('.feed').html();     
-                loadFeed(1, done);
-            });           
+            originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+
+                loadFeed(0, function() {
+                    firstFeed = $('.feed').html();     
+                    loadFeed(1, done);
+                });           
         });
+
         it('Ensure when New Feed is Loaded the content changes', function(done){
            secondFeed = $('.feed').html();
             expect(firstFeed).not.toBe(secondFeed);
-            done();
+            setTimeout(function(){
+                done();
+                }, 9000);
+        });
+
+        afterEach(function() {
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
         });
     });
 }());

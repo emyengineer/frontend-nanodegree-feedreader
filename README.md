@@ -41,6 +41,7 @@ Or if you want to get direct access to the online game hosted on **GitHub**
 # Contributing
 This code is developed and used search for help on some
 * [jasmine](https://jasmine.github.io/) 
+* [StackOverFlow](https://stackoverflow.com/questions/9867601/how-do-i-change-the-timeout-on-a-jasmine-node-async-spec) Fix timeout issue in jasmine.
 
 # Why This Project?
 _Testing is an important part of the development process and many organizations practice a standard of development known as "test-driven development". This is when developers write tests first, before they ever start developing their application. All the tests initially fail and then they start writing application code to make these tests pass._
